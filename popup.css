@@ -1,0 +1,75 @@
+:root {
+  --bg: #ffffff;
+  --fg: #16161d;
+  --muted: #6b6b7b;
+  --surface: #f1f1f6;
+  --border: #dcdce6;
+  --accent: #4f46e5;
+  --accent-fg: #ffffff;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18181f;
+    --fg: #ececf3;
+    --muted: #9a9aab;
+    --surface: #24242e;
+    --border: #353542;
+    --accent: #818cf8;
+    --accent-fg: #11111a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  width: 280px;
+  padding: 14px;
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.readout { display: flex; align-items: baseline; gap: 2px; }
+.readout input {
+  width: 96px;
+  font: 700 34px/1 system-ui, sans-serif;
+  text-align: right;
+  border: 0;
+  background: transparent;
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+  -moz-appearance: textfield;
+}
+.readout input::-webkit-inner-spin-button { display: none; }
+.readout input:focus { outline: 2px solid var(--accent); border-radius: 6px; }
+.readout span { font: 600 22px/1 system-ui, sans-serif; color: var(--muted); }
+button {
+  font: inherit;
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+.round { width: 40px; height: 40px; border-radius: 50%; font-size: 22px; line-height: 1; }
+#slider { width: 100%; margin: 14px 0 2px; accent-color: var(--accent); }
+.scale { position: relative; height: 14px; font-size: 10px; color: var(--muted); }
+.scale span { position: absolute; transform: translateX(-50%); }
+.scale span:nth-child(1) { left: 2%; }
+.scale span:nth-child(2) { left: 45.4%; }
+.scale span:nth-child(3) { left: 72.7%; }
+.scale span:nth-child(4) { left: 97%; }
+.presets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 12px; }
+.presets button { padding: 6px 0; font-variant-numeric: tabular-nums; }
+.presets button.active { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.shortcuts { margin-top: 12px; font-size: 11px; color: var(--muted); display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; }
+.shortcuts kbd {
+  font: 10px ui-monospace, Consolas, monospace;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0 4px;
+  justify-self: start;
+}
+.note { margin: 10px 0 0; font-size: 11px; color: var(--muted); }
